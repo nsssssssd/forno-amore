@@ -1,0 +1,105 @@
+---
+// src/components/ArticleCard.astro
+const { 
+  title = "Название статьи",
+  description = "Описание статьи",
+  image = "/placeholder.jpg",
+  link = "/articles",
+  buttonText = "Читать статью"
+} = Astro.props;
+---
+
+<div class="col-md-4 article-card">
+  <div class="card">
+    <img src={image} class="card-img-top" loading="lazy" alt={title} />
+    <div class="card-body text-center">
+      <h4 class="card-title">{title}</h4>
+      <p class="card-text">{description}</p>
+      <slot name="button" />
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+.article-card {
+  margin-bottom: 30px;
+  
+  .card {
+    background: #E6B89C;
+    color: #5A3E2B;
+    border-radius: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+  }
+  
+  .card-img-top {
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+  
+  .card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .card-text {
+    flex-grow: 1;
+  }
+  
+  .card-title {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .article-card {
+    .card {
+      cursor: pointer;
+      transition: transform 0.2s;
+      
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+    
+    .card::after {
+      content: "Нажмите, чтобы прочитать";
+      display: block;
+      text-align: center;
+      font-size: 1.4rem;
+      color: #9C4A36;
+      font-weight: bold;
+      padding: 10px 0;
+      background: rgba(255, 255, 255, 0.2);
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+      margin-top: auto;
+    }
+    
+    .card-body {
+      padding-bottom: 5px;
+    }
+    
+    .card-title {
+      font-size: 1.5rem;
+    }
+    
+    .card-text {
+      font-size: 1.1rem;
+    }
+  }
+}
+</style>

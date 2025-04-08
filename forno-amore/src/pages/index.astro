@@ -3,6 +3,10 @@
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import Button from '../components/Button.astro';
+import WhyChooseUs from '../components/WhyChooseUs.astro';
+import RecipeCard from '../components/RecipeCard.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import Button from '../components/buttons.astro';
 ---
 
 <Layout activeLink="/">
@@ -12,4 +16,116 @@ import Button from '../components/Button.astro';
     buttonText="Начать готовить"
     buttonLink="/recipes"
   />
+  <WhyChooseUs/>
+
+  
+<div class="container py-5">
+  <h2 class="section-title text-center">Популярные рецепты</h2>
+  <div class="row">
+    <RecipeCard 
+      title="Пицца Маргарита" 
+      description="Классическая итальянская пицца с томатами, базиликом и моцареллой."
+      image="/margarita.jpg"
+      link="/recipes/margarita"
+    >
+      <Button slot="button" text="Читать рецепт" href="/recipes/margarita" type="primary" />
+    </RecipeCard>
+    
+    <RecipeCard 
+      title="Паста Карбонара" 
+      description="Нежная паста с соусом из яиц, пармезана и гуанчиале. Идеальное блюдо для ужина."
+      image="/rf.jpg"
+      link="/recipes/margarita"
+    >
+      <Button slot="button" text="Читать рецепт" href="/recipes/margarita" type="primary" />
+    </RecipeCard>
+    <RecipeCard 
+      title="Ризотто с грибами" 
+      description="Ароматное ризотто с грибами и пармезаном. Настоящее итальянское блюдо для гурманов."
+      image="/rizo.jpg"
+      link="/recipes/margarita"
+    >
+      <Button slot="button" text="Читать рецепт" href="/recipes/margarita" type="primary" />
+    </RecipeCard>
+    <RecipeCard 
+      title="Тирамису" 
+      description="Знаменитый итальянский десерт с кофе и mascarpone. Легкий и воздушный.."
+      image="/t.jpg"
+      link="/recipes/margarita"
+    >
+      <Button slot="button" text="Читать рецепт" href="/recipes/margarita" type="primary" />
+    </RecipeCard>
+    <RecipeCard 
+      title="Лазанья" 
+      description="Слоёная паста с мясным соусом, бешамель и сыром. Классика итальянской кухни."
+      image="/la.jpg"
+      link="/recipes/margarita"
+    >
+      <Button slot="button" text="Читать рецепт" href="/recipes/margarita" type="primary" />
+    </RecipeCard>
+    <RecipeCard 
+      title="Брускетта" 
+      description="Итальянская закуска с помидорами, базиликом и оливковым маслом. Просто и вкусно."
+      image="/12.jpg"
+      link="/recipes/margarita"
+    >
+      <Button slot="button" text="Читать рецепт" href="/recipes/margarita" type="primary" />
+    </RecipeCard>
+    
+  </div>
+</div>
+    <div class="container py-5">
+  <h2 class="section-title text-center">Популярные статьи</h2>
+  <div class="row">
+    <ArticleCard 
+      title="История пиццы" 
+      description="Узнайте, как пицца стала одним из самых популярных блюд в мире"
+      image="/img/mar.jpg"
+      link="/articles/pizza-history"
+    >
+      <Button slot="button" text="Читать статью" href="/articles/pizza-history" type="primary" />
+    </ArticleCard>
+    <ArticleCard 
+      title="История пиццы" 
+      description="Узнайте, как пицца стала одним из самых популярных блюд в мире"
+      image="/img/mar.jpg"
+      link="/articles/pizza-history"
+    >
+      <Button slot="button" text="Читать статью" href="/articles/pizza-history" type="primary" />
+    </ArticleCard>
+    <ArticleCard 
+      title="История пиццы" 
+      description="Узнайте, как пицца стала одним из самых популярных блюд в мире"
+      image="/img/mar.jpg"
+      link="/articles/pizza-history"
+    >
+      <Button slot="button" text="Читать статью" href="/articles/pizza-history" type="primary" />
+    </ArticleCard>
+    <ArticleCard 
+      title="История пиццы" 
+      description="Узнайте, как пицца стала одним из самых популярных блюд в мире"
+      image="/img/mar.jpg"
+      link="/articles/pizza-history"
+    >
+      <Button slot="button" text="Читать статью" href="/articles/pizza-history" type="primary" />
+    </ArticleCard>
+    <ArticleCard 
+      title="История пиццы" 
+      description="Узнайте, как пицца стала одним из самых популярных блюд в мире"
+      image="/img/mar.jpg"
+      link="/articles/pizza-history"
+    >
+      <Button slot="button" text="Читать статью" href="/articles/pizza-history" type="primary" />
+    </ArticleCard>
+    <ArticleCard 
+      title="История пиццы" 
+      description="Узнайте, как пицца стала одним из самых популярных блюд в мире"
+      image="/img/mar.jpg"
+      link="/articles/pizza-history"
+    >
+      <Button slot="button" text="Читать статью" href="/articles/pizza-history" type="primary" />
+    </ArticleCard>
+    
+  </div>
+  
 </Layout>
