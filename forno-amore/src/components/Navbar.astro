@@ -1,58 +1,44 @@
 ---
 // src/components/Navbar.astro
 import type { Props } from 'astro';
-const { activeLink = '/' } = Astro.props;
+const currentPath = Astro.url.pathname;
+const activeLink = currentPath === '/' ? '/' 
+                 : currentPath.startsWith('/recipes') ? '/recipes'
+                 : currentPath.startsWith('/stat') ? '/stat'
+                 : currentPath.startsWith('/about') ? '/about'
+                 : '';
 ---
 
-<nav class="navbar navbar-expand-lg navbar-dark sticky-top  font">
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top font">
   <div class="container">
     <a href="/" class="navbar-brand d-flex align-items-center">
-      <img 
-        src="/LOGO.jpg" alt="Forno & Amore Logo" width="64" height="64" class="rounded-circle">
+      <img src="/LOGO.jpg" alt="Forno & Amore Logo" width="64" height="64" class="rounded-circle">
       <span class="ms-3 fs-4">Forno & Amore</span>
     </a>
     
-    <button 
-      class="navbar-toggler" 
-      type="button" 
-      data-bs-toggle="collapse" 
-      data-bs-target="#navbarNav"
-      aria-label="Toggle navigation"
-    >
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     
     <div class="collapse navbar-collapse font" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a 
-            class={`nav-link ${activeLink === '/' ? 'active' : ''}`} 
-            href="/"
-          >
+          <a class={`nav-link ${activeLink === '/' ? 'active' : ''}`} href="/">
             <i class="fas me-2"></i>Главная
           </a>
         </li>
         <li class="nav-item">
-          <a 
-            class={`nav-link ${activeLink === '/recipes' ? 'active' : ''}`} 
-            href="/recipes"
-          >
+          <a class={`nav-link ${activeLink === '/recipes' ? 'active' : ''}`} href="/recipes">
             <i class="fas fa-pizza-slice me-2"></i>Рецепты
           </a>
         </li>
         <li class="nav-item">
-          <a 
-            class={`nav-link ${activeLink === '/articles' ? 'active' : ''}`} 
-            href="/articles"
-          >
+          <a class={`nav-link ${activeLink === '/stat' ? 'active' : ''}`} href="/stat">
             <i class="fas fa-book-open me-2"></i>Статьи
           </a>
         </li>
         <li class="nav-item">
-          <a 
-            class={`nav-link ${activeLink === '/about' ? 'active' : ''}`} 
-            href="/about"
-          >
+          <a class={`nav-link ${activeLink === '/about' ? 'active' : ''}`} href="/about">
             <i class="fas fa-users me-2"></i>О нас
           </a>
         </li>
@@ -114,7 +100,7 @@ const { activeLink = '/' } = Astro.props;
 
   &.active {
     color: #FFD700;
-    font-weight: bold;
+    
   }
 }
 
