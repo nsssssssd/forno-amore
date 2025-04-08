@@ -1,0 +1,122 @@
+---
+// src/components/Footer.astro
+const { 
+  email = "isupov_kostya@bk.ru",
+  telegram = "fornoandamore",
+  currentYear = new Date().getFullYear()
+} = Astro.props;
+---
+
+<footer class="footer">
+  <div class="container text-center">
+    <p class="copyright">&copy; {currentYear} Forno & Amore. Все права защищены</p>
+    
+    <div class="text-links mt-3">
+      <a href="#" class="text-link">Политика конфиденциальности</a>
+      <span class="divider">|</span>
+      <a href="#" class="text-link">Условия использования</a>
+    </div>
+    
+    <div class="icon-links mt-3">
+      <a href={`mailto:${email}`} class="icon-link" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href={`https://t.me/${telegram}`} class="icon-link" target="_blank" aria-label="Telegram">
+        <i class="fab fa-telegram-plane"></i>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<style lang="scss">
+.footer {
+  background: linear-gradient(90deg, #9C4A36, #C16850);
+  padding: 40px 0;
+  color: white;
+  margin-top: 50px;
+  font-family: 'Courier New', monospace;
+
+  .copyright {
+    margin-bottom: 0;
+    font-size: 1rem;
+  }
+
+  .text-links {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .text-link {
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+    font-size: 1rem;
+    
+    &:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+  }
+
+  .divider {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .icon-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    margin-top: 15px;
+  }
+
+  .icon-link {
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1.5rem;
+    
+    &:hover {
+      transform: scale(1.2);
+      opacity: 0.9;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 30px 0;
+    
+    .text-links {
+      gap: 10px;
+    }
+    
+    .icon-links {
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 25px 0;
+    
+    .copyright {
+      font-size: 0.9rem;
+    }
+    
+    .text-link {
+      font-size: 0.9rem;
+    }
+    
+    .icon-link {
+      font-size: 1.3rem;
+    }
+    
+    .text-links,
+    .icon-links {
+      flex-wrap: wrap;
+    }
+  }
+}
+</style>

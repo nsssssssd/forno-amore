@@ -15,20 +15,14 @@ const {
     <div class="card-body text-center">
       <h3 class="card-title">{title}</h3>
       <p class="card-text">{description}</p>
-      <slot name="button" />
+      <div class="button-wrapper">
+        <slot name="button" />
+      </div>
     </div>
   </div>
 </div>
 
 <style lang="scss">
-  .card {
-  cursor: pointer;
-  transition: transform 0.2s;
-  
-  &:hover {
-    transform: scale(1.02);
-  }
-}
 .recipe-card {
   margin-bottom: 30px;
   
@@ -71,21 +65,26 @@ const {
     margin-bottom: 15px;
   }
 
+ 
+  .button-wrapper {
+    display: block;
+  }
+
 
   @media (max-width: 768px) {
     .card {
       cursor: pointer;
-      transition: transform 0.2s;
       
       &:hover {
-        transform: scale(1.02);
+        transform: none;
       }
     }
-    ::slotted([slot="button"]) {
-      display: none !important;
+
+
+    .button-wrapper {
+      display: none;
     }
 
-  
     .card::after {
       content: "Нажмите, чтобы прочитать";
       display: block;
@@ -97,28 +96,12 @@ const {
       background: rgba(255, 255, 255, 0.2);
       border-bottom-left-radius: 15px;
       border-bottom-right-radius: 15px;
-      margin-top: auto;
-    }
-
-    .card-body {
-      padding-bottom: 5px;
-    }
-
-    .card-title {
-      font-size: 1.5rem;
-    }
-
-    .card-text {
-      font-size: 1.1rem;
-      padding-bottom: 15px;
     }
   }
 
-  
   @media (max-width: 480px) {
     width: 100%;
     padding: 0 10px;
-    float: none;
   }
 }
 </style>

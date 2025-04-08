@@ -15,7 +15,9 @@ const {
     <div class="card-body text-center">
       <h4 class="card-title">{title}</h4>
       <p class="card-text">{description}</p>
-      <slot name="button" />
+      <div class="button-container">
+        <slot name="button" />
+      </div>
     </div>
   </div>
 </div>
@@ -63,7 +65,12 @@ const {
     margin-bottom: 15px;
   }
 
+  
+  .button-container {
+    display: block;
+  }
 
+ 
   @media (max-width: 768px) {
     .card {
       cursor: pointer;
@@ -75,7 +82,7 @@ const {
     }
 
     
-    ::slotted([slot="button"]) {
+    .button-container {
       display: none !important;
     }
 
@@ -113,14 +120,6 @@ const {
     width: 100%;
     padding: 0 10px;
     float: none;
-  }
-}
-.card {
-  cursor: pointer;
-  transition: transform 0.2s;
-  
-  &:hover {
-    transform: scale(1.02);
   }
 }
 </style>
