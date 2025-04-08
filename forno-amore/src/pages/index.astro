@@ -2,7 +2,6 @@
 // src/pages/index.astro
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
-import Button from '../components/Button.astro';
 import WhyChooseUs from '../components/WhyChooseUs.astro';
 import RecipeCard from '../components/RecipeCard.astro';
 import ArticleCard from '../components/ArticleCard.astro';
@@ -74,52 +73,54 @@ import Button from '../components/buttons.astro';
     
   </div>
 </div>
+
+<div class="decorative-line"></div>
     <div class="container py-5">
   <h2 class="section-title text-center">Популярные статьи</h2>
   <div class="row">
     <ArticleCard 
       title="История пиццы" 
       description="Узнайте, как пицца стала одним из самых популярных блюд в мире"
+      image="/mar.jpg"
+      link="/articles/pizza-history"
+    >
+      <Button slot="button" text="Читать статью" href="/articles/pizza-history" type="primary" />
+    </ArticleCard>
+    <ArticleCard 
+      title="Тесто для настоящей Итальянской пиццы" 
+      description="Классический рецепт идеального теста для пиццы"
+      image="/тесто.jpg"
+      link="/articles/pizza-history"
+    >
+      <Button slot="button" text="Читать статью" href="/articles/pizza-history" type="primary" />
+    </ArticleCard>
+    <ArticleCard 
+      title="Как выбрать идеальный сыр для пиццы" 
+      description="5 лучших сыров для пиццы и секреты идеального сырного покрытия."
+      image="/cheese.jpg"
+      link="/articles/pizza-history"
+    >
+      <Button slot="button" text="Читать статью" href="/articles/pizza-history" type="primary" />
+    </ArticleCard>
+    <ArticleCard 
+      title="Как выбрать печь для пиццы" 
+      description="Как выбрать идеальную печь для пиццы: разбираем все типы и даем рекомендации"
+      image="/печь.jpg"
+      link="/articles/pizza-history"
+    >
+      <Button slot="button" text="Читать статью" href="/articles/pizza-history" type="primary" />
+    </ArticleCard>
+    <ArticleCard 
+      title="Скоро.." 
+      description="Скоро.."
       image="/img/mar.jpg"
       link="/articles/pizza-history"
     >
       <Button slot="button" text="Читать статью" href="/articles/pizza-history" type="primary" />
     </ArticleCard>
     <ArticleCard 
-      title="История пиццы" 
-      description="Узнайте, как пицца стала одним из самых популярных блюд в мире"
-      image="/img/mar.jpg"
-      link="/articles/pizza-history"
-    >
-      <Button slot="button" text="Читать статью" href="/articles/pizza-history" type="primary" />
-    </ArticleCard>
-    <ArticleCard 
-      title="История пиццы" 
-      description="Узнайте, как пицца стала одним из самых популярных блюд в мире"
-      image="/img/mar.jpg"
-      link="/articles/pizza-history"
-    >
-      <Button slot="button" text="Читать статью" href="/articles/pizza-history" type="primary" />
-    </ArticleCard>
-    <ArticleCard 
-      title="История пиццы" 
-      description="Узнайте, как пицца стала одним из самых популярных блюд в мире"
-      image="/img/mar.jpg"
-      link="/articles/pizza-history"
-    >
-      <Button slot="button" text="Читать статью" href="/articles/pizza-history" type="primary" />
-    </ArticleCard>
-    <ArticleCard 
-      title="История пиццы" 
-      description="Узнайте, как пицца стала одним из самых популярных блюд в мире"
-      image="/img/mar.jpg"
-      link="/articles/pizza-history"
-    >
-      <Button slot="button" text="Читать статью" href="/articles/pizza-history" type="primary" />
-    </ArticleCard>
-    <ArticleCard 
-      title="История пиццы" 
-      description="Узнайте, как пицца стала одним из самых популярных блюд в мире"
+      title="Скоро.." 
+      description="Скоро.."
       image="/img/mar.jpg"
       link="/articles/pizza-history"
     >
