@@ -1,0 +1,95 @@
+---
+// src/components/Hero.astro
+import Button from '../components/buttons.astro';
+const { 
+  title = "Рецепты итальянской кухни от Forno & Amore", 
+  subtitle = "Простые и вкусные рецепты итальянской кухни", 
+  buttonText = "Начать готовить",
+  buttonLink = "/recipes",
+  backgroundImage = "/hero.jpg"
+} = Astro.props;
+---
+
+<section class="hero" style={`
+  background: linear-gradient(rgba(156, 74, 54, 0.6), rgba(204, 134, 94, 0.6)), 
+              url('${backgroundImage}') no-repeat center center/cover;
+  min-height: 100vh;
+`}>
+  <div class="container">
+    <h1 class="hero-title">{title}</h1>
+    <p class="hero-subtitle">{subtitle}</p>
+  <Button 
+  text="Начать готовить" 
+  href="/recipes" 
+  type="primary" 
+  size="large"
+  icon="fa-pizza-slice"
+/>
+  </div>
+</section>
+
+<style lang="scss">
+.hero {
+  
+  color: white;
+  padding: 150px 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0;
+  text-align: center;
+
+  .container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    max-width: 800px;
+  }
+
+  &-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease-out;
+  }
+
+  &-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    animation: fadeIn 1.5s ease-out;
+  }
+
+  &-button {
+    animation: fadeIn 2s ease-out;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 100px 20px;
+    
+    &-title {
+      font-size: 2rem;
+    }
+    
+    &-subtitle {
+      font-size: 1rem;
+    }
+    
+    .container {
+      padding: 30px 20px;
+    }
+  }
+}
+</style>

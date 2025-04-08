@@ -1,0 +1,109 @@
+---
+// src/components/Button.astro
+const {
+  text = "Кнопка",
+  href = "#",
+  type = "primary",
+  size = "medium",
+  icon = "",
+  isFullWidth = false
+} = Astro.props;
+---
+
+<a 
+  href={href} 
+  class={`btn btn-${type} btn-${size} ${isFullWidth ? 'btn-full-width' : ''}`}
+  role="button"
+>
+  {icon && <i class={`fas ${icon} me-2`}></i>}
+  {text}
+</a>
+
+<style lang="scss">
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  // Типы кнопок
+  &-primary {
+    background: linear-gradient(135deg, #9C4A36, #C16850);
+    color: white;
+    box-shadow: 0 4px 15px rgba(156, 74, 54, 0.4);
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(156, 74, 54, 0.6);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  &-secondary {
+    background: #E6B89C;
+    color: #5A3E2B;
+    border: 2px solid #9C4A36;
+
+    &:hover {
+      background: #D97B55;
+      color: white;
+    }
+  }
+
+  // Размеры кнопок
+  &-small {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+
+  &-medium {
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+
+  &-large {
+    padding: 16px 32px;
+    font-size: 1.2rem;
+  }
+
+  // Полная ширина
+  &-full-width {
+    width: 100%;
+    display: block;
+  }
+
+  // Иконки
+  i {
+    transition: transform 0.3s ease;
+  }
+
+  &:hover i {
+    transform: scale(1.1);
+  }
+}
+
+@media (max-width: 768px) {
+  .btn {
+    &-medium {
+      padding: 10px 20px;
+      font-size: 0.9rem;
+    }
+    
+    &-large {
+      padding: 14px 28px;
+      font-size: 1.1rem;
+    }
+  }
+}
+</style>

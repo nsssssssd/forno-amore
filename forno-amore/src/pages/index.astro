@@ -1,8 +1,15 @@
 ---
 // src/pages/index.astro
 import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Button from '../components/Button.astro';
 ---
 
 <Layout activeLink="/">
-  <!-- Контент страницы -->
+    <Hero 
+    title="Рецепты итальянской кухни от Forno & Amore — готовим дома с любовью!"
+    subtitle="Простые и вкусные рецепты итальянской кухни. Пошаговые инструкции, советы от шеф-поваров и вдохновение для ваших кулинарных экспериментов."
+    buttonText="Начать готовить"
+    buttonLink="/recipes"
+  />
 </Layout>

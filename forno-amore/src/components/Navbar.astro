@@ -4,7 +4,7 @@ import type { Props } from 'astro';
 const { activeLink = '/' } = Astro.props;
 ---
 
-<nav class="navbar navbar-expand-lg navbar-dark sticky-top font">
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top  font">
   <div class="container">
     <a href="/" class="navbar-brand d-flex align-items-center">
       <img 
@@ -72,6 +72,8 @@ const { activeLink = '/' } = Astro.props;
     border-radius: 10px;
 }
 .navbar {
+  position: fixed;
+  width: 100%;
   background: #9C4A36;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   padding: 10px 0;
