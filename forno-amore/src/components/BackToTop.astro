@@ -1,0 +1,99 @@
+---
+// src/components/BackToTop.astro
+---
+
+<button id="backToTop" title="Наверх" aria-label="Наверх"></button>
+
+<style lang="scss">
+  #backToTop {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background: linear-gradient(135deg, #9C4A36, #C16850);
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(156, 74, 54, 0.4);
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    &:hover {
+      background: linear-gradient(135deg, #C16850, #9C4A36);
+      box-shadow: 0 6px 20px rgba(156, 74, 54, 0.6);
+      transform: scale(1.1) translateY(-5px);
+    }
+
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"/></svg>') no-repeat center center;
+    }
+  }
+
+  @media (max-width: 768px) {
+    #backToTop {
+      padding: 12px;
+      bottom: 15px;
+      right: 15px;
+      width: 45px;
+      height: 45px;
+      
+      &::before {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+</style>
+
+<script is:inline>
+document.addEventListener('DOMContentLoaded', function() {
+    const backToTopButton = document.getElementById('backToTop');
+    const scrollThreshold = 300;
+    
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > scrollThreshold) {
+            backToTopButton.classList.add('show');
+        } else {
+            backToTopButton.classList.remove('show');
+        }
+    });
+    
+    backToTopButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+        this.style.transform = 'scale(1.2)';
+        setTimeout(() => {
+            this.style.transform = 'scale(1)';
+        }, 300);
+    });
+    
+    if ('ontouchstart' in window) {
+        backToTopButton.style.width = '60px';
+        backToTopButton.style.height = '60px';
+        backToTopButton.style.bottom = '20px';
+        backToTopButton.style.right = '20px';
+    }
+});
+</script>

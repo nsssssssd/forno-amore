@@ -1,0 +1,29 @@
+
+body {
+  height: 2000px;
+    background-color: #F4E1D2; 
+    color: #5A3E2B; 
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    min-height: 100vh;
+    margin: 0;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 10px; 
+  }
+  ::-webkit-scrollbar-track {
+    background: #F4E1D2;
+    border-radius: 5px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #9C4A36; 
+    border-radius: 5px;
+    border: 2px solid #F4E1D2;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #7F3A2A; 
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #9C4A36 #F4E1D2;
+  }

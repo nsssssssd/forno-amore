@@ -1,0 +1,150 @@
+---
+// src/components/Navbar.astro
+import type { Props } from 'astro';
+const { activeLink = '/' } = Astro.props;
+---
+
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top font">
+  <div class="container">
+    <a href="/" class="navbar-brand d-flex align-items-center">
+      <img 
+        src="/LOGO.jpg" alt="Forno & Amore Logo" width="64" height="64" class="rounded-circle">
+      <span class="ms-3 fs-4">Forno & Amore</span>
+    </a>
+    
+    <button 
+      class="navbar-toggler" 
+      type="button" 
+      data-bs-toggle="collapse" 
+      data-bs-target="#navbarNav"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse font" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a 
+            class={`nav-link ${activeLink === '/' ? 'active' : ''}`} 
+            href="/"
+          >
+            <i class="fas me-2"></i>Главная
+          </a>
+        </li>
+        <li class="nav-item">
+          <a 
+            class={`nav-link ${activeLink === '/recipes' ? 'active' : ''}`} 
+            href="/recipes"
+          >
+            <i class="fas fa-pizza-slice me-2"></i>Рецепты
+          </a>
+        </li>
+        <li class="nav-item">
+          <a 
+            class={`nav-link ${activeLink === '/articles' ? 'active' : ''}`} 
+            href="/articles"
+          >
+            <i class="fas fa-book-open me-2"></i>Статьи
+          </a>
+        </li>
+        <li class="nav-item">
+          <a 
+            class={`nav-link ${activeLink === '/about' ? 'active' : ''}`} 
+            href="/about"
+          >
+            <i class="fas fa-users me-2"></i>О нас
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<style lang="scss">
+.font{
+   font-family: Georgia, 'Times New Roman', Times, serif;
+   font-weight: normal;
+}
+.navbar-collapse {
+    background: #C16850;
+    padding: 10px;
+    border-radius: 10px;
+}
+.navbar {
+  background: #9C4A36;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 10px 0;
+  transition: all 0.3s ease;
+
+  &.scrolled {
+    padding: 5px 0;
+    background: rgba(156, 74, 54, 0.9);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.navbar-nav .nav-link {
+  color: white;
+  font-weight: 500;
+  margin: 0 10px;
+  position: relative;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #FFD700;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #FFD700;
+    transition: width 0.3s ease;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+
+  &.active {
+    color: #FFD700;
+    font-weight: bold;
+  }
+}
+
+.navbar-toggler {
+  border: none;
+  outline: none;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+@media (max-width: 992px) {
+  .navbar-collapse {
+    background: #C16850;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+  }
+}
+</style>
+
+<script>
+
+if (typeof window !== 'undefined') {
+  window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+}
+</script>
