@@ -1,8 +1,71 @@
----
 
+---
+// src/pages/stat.astro
 import Layout from '../layouts/Layout.astro';
+import ArticleCard from '../components/stats/ArticleCard.astro';
+import FeaturedArticleCard from '../components/stats/FeaturedArticleCard.astro';
 ---
 
 <Layout activeLink="/">
-
-<Layout/>
+    <div class="container my-5 mx-auto px-3">
+        <h2 class="section-title">Статьи об итальянской кухне</h2>
+        <div class="row">
+          <ArticleCard
+            title="История пиццы: как появилась пицца"
+            description="Узнайте, как пицца стала одним из самых популярных блюд в мире"
+            image="/mar.jpg"
+            link="/article1.html"
+          />
+          <ArticleCard
+            title="Тесто для настоящей Итальянской пиццы"
+            description="Классический рецепт идеального теста для пиццы"
+            image="/тесто.jpg"
+            link="/article2.html"
+          />
+          <ArticleCard
+            title=""
+            description=""
+            image=""
+            link=""
+           /> 
+           <ArticleCard
+            title=""
+            description=""
+            image=""
+            link=""
+           /> 
+           <ArticleCard
+            title=""
+            description=""
+            image=""
+            link=""
+           /> 
+           <ArticleCard
+            title=""
+            description=""
+            image=""
+            link=""
+           /> 
+        </div>
+      </div>
+      
+      <div class="featured-articles mx-0 px-3">
+        <div class="container">
+          <h2 class="section-title">Рекомендуемые статьи</h2>
+          <div class="row">
+            <FeaturedArticleCard
+              title="Как выбрать идеальный сыр для пиццы"
+              description="5 лучших сыров для пиццы."
+              image="/img/cheese.jpg"
+              link="/article3.html"
+            />
+            <FeaturedArticleCard
+              title="Тесто для Итальянской пиццы"
+              description="Классический рецепт идеального теста для пиццы"
+              image="/img/тесто.jpg"
+              link="/article2.html"
+            />
+          </div>
+        </div>
+      </div>
+</Layout>

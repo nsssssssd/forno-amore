@@ -28,7 +28,7 @@ body {
   }
 
   .section-title {
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-bottom: 40px;
     font-weight: bold;
     text-transform: uppercase;
@@ -50,4 +50,8 @@ body {
   height: 2px;
   background: linear-gradient(90deg, #9C4A36, #C16850);
   margin: 40px 0;
+}
+body {
+  overflow-x: hidden;
+  width: 100%;
 }
