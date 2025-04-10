@@ -2,9 +2,11 @@
 import Layout from "../layouts/Layout.astro"
 import  ArticleCard from "../components/ArticleCard.astro"
 import Button from "../components/buttons.astro"
+import Navbar from '../components/NavbarA.astro';
 ---
 <Layout activeLink="/">
-    <div class="container py-5" style="margin-top: 5%;"    >
+  <Navbar/>
+    <div class="container py-5">
     <h2 class="section-title text-center">Статьи об Итальянской кухне</h2>
     <div class="row">
       <ArticleCard 

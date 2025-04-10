@@ -5,6 +5,7 @@ import RecipeCard from '../components/RecipeCard.astro';
 import Button from '../components/buttons.astro';
 import RecipeFilters from '../components/RecipeFilters.astro';
 import RecipeSearch from '../components/RecipeSearch.astro';
+import Navbar from '../components/NavbarA.astro';
 
 // Пример данных рецептов (в реальном проекте можно получать из API или Markdown)
 const recipes = [
@@ -67,7 +68,8 @@ const recipes = [
 ];
 ---
 
-<Layout activeLink="/recipes">
+<Layout>
+    <Navbar/>
   <div class="container py-5" id="recipes-section">
     <h2 class="section-title text-center">Рецепты</h2>
     
