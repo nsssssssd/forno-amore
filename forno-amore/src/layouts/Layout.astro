@@ -17,10 +17,20 @@ const { activeLink } = Astro.props;
   <link rel="icon" href="/favicon.jpg" type="image/jpeg">
   <title>Forno & Amore</title>
 </head>
-
-<body>
+<style>
+    .site {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .site-content {
+    flex: 1;
+  }
+</style>
+<body class="site">
   <Navbar activeLink={activeLink} />
-  <main>
+  <main class="site-content">
     <slot />
   </main>
   <BackToTop/>
