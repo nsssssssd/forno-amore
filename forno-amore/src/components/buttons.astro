@@ -5,7 +5,7 @@ const {
   href = "#",
   type = "primary",
   size = "medium",
-  icon = "",
+  // icon = "",
   isFullWidth = false
 } = Astro.props;
 ---
@@ -15,7 +15,7 @@ const {
   class={`btn btn-${type} btn-${size} ${isFullWidth ? 'btn-full-width' : ''}`}
   role="button"
 >
-  {icon && <i class={`fas ${icon} me-2`}></i>}
+  <!-- {icon && <i class={`fas ${icon} me-2`}></i>} -->
   {text}
 </a>
 
