@@ -1,0 +1,82 @@
+---
+// src/components/RecipeSearch.astro
+---
+
+<div class="search-box text-center mb-4">
+    <form class="d-flex justify-content-center" id="searchForm">
+      <div class="ui-widget" style="position: relative;">
+        <input class="form-control me-2" type="search" id="searchInput" placeholder="Поиск рецептов..." style="max-width: 400px;">
+      </div>
+      <button class="btn btn-primary btn-animated" type="submit">Найти</button>
+    </form>
+  </div>
+  
+  <style>
+  .search-box {
+    max-width: 400px;
+    margin: 0 auto 40px;
+  }
+  
+  #searchForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  #searchInput {
+    border: 2px solid #9C4A36;
+    border-radius: 25px;
+    padding: 12px 20px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  #searchInput:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(156, 74, 54, 0.2);
+  }
+  
+  .btn-animated {
+    background-color: #9C4A36;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-left: 10px;
+  }
+  
+  .btn-animated:hover {
+    background-color: #7a3a2a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .btn-animated:active {
+    transform: translateY(0);
+  }
+  
+  @media (max-width: 767.98px) {
+    .search-box {
+      padding: 0 10px;
+    }
+    
+    #searchForm {
+      flex-direction: column;
+    }
+    
+    #searchInput {
+      margin-bottom: 10px;
+      max-width: 100%;
+    }
+    
+    .btn-animated {
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+  </style>

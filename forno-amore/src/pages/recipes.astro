@@ -1,7 +1,220 @@
 ---
-import Layout from "../layouts/Layout.astro";
+// src/pages/recipes.astro
+import Layout from '../layouts/Layout.astro';
+import RecipeCard from '../components/RecipeCard.astro';
+import Button from '../components/buttons.astro';
+import RecipeFilters from '../components/RecipeFilters.astro';
+import RecipeSearch from '../components/RecipeSearch.astro';
+
+// Пример данных рецептов (в реальном проекте можно получать из API или Markdown)
+const recipes = [
+  {
+    id: 1,
+    title: "Пицца Маргарита",
+    description: "Классика с сыром моцареллой, базиликом и орегано",
+    image: "/img/margarita.jpg",
+    category: "pizza",
+    modalId: "margheritaModal"
+  },
+  {
+    id: 2,
+    title: "Паста Карбонара",
+    description: "С панчеттой, яйцами и пармезаном",
+    image: "/img/rf.jpg",
+    category: "pasta",
+    modalId: "carbonaraModal"
+  },
+  {
+    id: 3,
+    title: "Паста Карбонара",
+    description: "С панчеттой, яйцами и пармезаном",
+    image: "/img/rf.jpg",
+    category: "pasta",
+    modalId: "carbonaraModal"
+  },
+  {
+    id: 4,
+    title: "Паста Карбонара",
+    description: "С панчеттой, яйцами и пармезаном",
+    image: "/img/rf.jpg",
+    category: "pasta",
+    modalId: "carbonaraModal"
+  },
+  {
+    id: 5,
+    title: "Паста Карбонара",
+    description: "С панчеттой, яйцами и пармезаном",
+    image: "/img/rf.jpg",
+    category: "pasta",
+    modalId: "carbonaraModal"
+  },
+  {
+    id: 6,
+    title: "Паста Карбонара",
+    description: "С панчеттой, яйцами и пармезаном",
+    image: "/img/rf.jpg",
+    category: "pasta",
+    modalId: "carbonaraModal"
+  },
+  {
+    id: 7,
+    title: "Паста Карбонара",
+    description: "С панчеттой, яйцами и пармезаном",
+    image: "/img/rf.jpg",
+    category: "pasta",
+    modalId: "carbonaraModal"
+  },
+];
 ---
 
-<Layout activeLink="/">
-
+<Layout activeLink="/recipes">
+  <div class="container py-5" id="recipes-section">
+    <h2 class="section-title text-center">Рецепты</h2>
+    
+    <RecipeSearch />
+    <RecipeFilters />
+    
+    <div class="row g-4">
+      {recipes.map(recipe => (
+        <RecipeCard 
+          title={recipe.title}
+          description={recipe.description}
+          image={recipe.image}
+          data-category={recipe.category}
+        >
+          <Button 
+            slot="button"
+            text="Рецепт"
+            type="primary"
+            size="medium"
+            href={`#${recipe.modalId}`}
+            data-bs-toggle="modal"
+            data-bs-target={`#${recipe.modalId}`}
+          />
+        </RecipeCard>
+      ))}
+    </div>
+    
+    <div id="noResultsMessage" class="text-center mt-4" style="display: none;">
+      <h4>Таких блюд нет 😢</h4>
+      <p>Попробуйте изменить запрос или выбрать другую категорию.</p>
+      <button id="understandButton" class="btn btn-primary mt-3">Понятно</button>
+    </div>
+    
+    <div id="paginationContainer" class="mt-4"></div>
+  </div>
+  
+  <!-- Модальные окна для рецептов -->
+  {recipes.map(recipe => (
+    <div class="modal fade" id={recipe.modalId} tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">{recipe.title}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6">
+                <h4>Ингредиенты:</h4>
+                <ul>
+                  <li>Ингредиент 1</li>
+                  <li>Ингредиент 2</li>
+                  <li>Ингредиент 3</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <img src={recipe.image} class="img-fluid rounded mb-3" alt={recipe.title} loading="lazy">
+              </div>
+            </div>
+            <h4>Инструкция:</h4>
+            <ol>
+              <li>Шаг 1</li>
+              <li>Шаг 2</li>
+              <li>Шаг 3</li>
+            </ol>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  ))}
+  
+  <script is:inline>
+    // Фильтрация рецептов
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterButtons = document.querySelectorAll('.filter-button');
+      const recipeCards = document.querySelectorAll('.recipe-card');
+      const searchForm = document.getElementById('searchForm');
+      const searchInput = document.getElementById('searchInput');
+      const noResultsMessage = document.getElementById('noResultsMessage');
+      
+      // Фильтрация по категориям
+      filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const filter = button.dataset.filter;
+          
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+          
+          recipeCards.forEach(card => {
+            if (filter === 'all' || card.dataset.category === filter) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+          
+          checkNoResults();
+        });
+      });
+      
+      // Поиск рецептов
+      if (searchForm && searchInput) {
+        searchForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const searchTerm = searchInput.value.toLowerCase();
+          
+          recipeCards.forEach(card => {
+            const title = card.querySelector('.card-title').textContent.toLowerCase();
+            const description = card.querySelector('.card-text').textContent.toLowerCase();
+            
+            if (title.includes(searchTerm) || description.includes(searchTerm)) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+          
+          checkNoResults();
+        });
+      }
+      
+      // Проверка на отсутствие результатов
+      function checkNoResults() {
+        const visibleCards = [...recipeCards].filter(card => 
+          card.style.display !== 'none'
+        );
+        
+        if (visibleCards.length === 0) {
+          noResultsMessage.style.display = 'block';
+        } else {
+          noResultsMessage.style.display = 'none';
+        }
+      }
+      
+      // Кнопка "Понятно" в сообщении об отсутствии результатов
+      const understandButton = document.getElementById('understandButton');
+      if (understandButton) {
+        understandButton.addEventListener('click', () => {
+          noResultsMessage.style.display = 'none';
+          searchInput.value = '';
+          recipeCards.forEach(card => card.style.display = 'block');
+          document.querySelector('.filter-button[data-filter="all"]').click();
+        });
+      }
+    });
+  </script>
 </Layout>

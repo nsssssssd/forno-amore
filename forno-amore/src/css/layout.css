@@ -1,4 +1,69 @@
+/* Стили для пагинации */
+.pagination {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+}
 
+.page-item {
+  margin: 0 5px;
+  display: inline-block;
+  float: none;
+}
+
+.page-link {
+  color: #9C4A36;
+  background-color: #F4E1D2;
+  border: 2px solid #9C4A36;
+  border-radius: 25px !important;
+  padding: 8px 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.page-item.active .page-link {
+  background-color: #9C4A36;
+  border-color: #9C4A36;
+  color: white;
+}
+
+.page-link:hover {
+  color: white;
+  background-color: #9C4A36;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.page-item.disabled .page-link {
+  color: #6c757d;
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+  pointer-events: none;
+}
+
+@media (max-width: 767.98px) {
+  .pagination {
+      padding-bottom: 10px;
+  }
+  
+  .page-item {
+      margin: 0 3px;
+  }
+  
+  .page-link {
+      padding: 6px 12px;
+      font-size: 14px;
+      min-width: 40px;
+      text-align: center;
+  }
+}
 body {
     background-color: #F4E1D2; 
     color: #5A3E2B; 
@@ -6,8 +71,15 @@ body {
     min-height: 100vh;
     margin: 0;
   }
-  
+  /* мейби так сделаю */
+  .element::-webkit-scrollbar {
+    width: 0;
+  }
   ::-webkit-scrollbar {
+    width: 0;
+  }
+  /* а мейби так */
+  /* ::-webkit-scrollbar {
     width: 10px; 
   }
   ::-webkit-scrollbar-track {
@@ -25,7 +97,7 @@ body {
   * {
     scrollbar-width: thin;
     scrollbar-color: #9C4A36 #F4E1D2;
-  }
+  } */
 
   .section-title {
     font-size: 2rem;

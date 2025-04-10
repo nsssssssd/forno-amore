@@ -1,0 +1,142 @@
+---
+// src/components/RecipeFilters.astro
+const { activeFilter = "all" } = Astro.props;
+---
+
+<div class="desktop-filter-buttons text-center mb-4">
+  <button class="btn btn-outline-primary filter-button" data-filter="all" class:list={[activeFilter === 'all' && 'active']}>Все</button>
+  <button class="btn btn-outline-primary filter-button" data-filter="pizza" class:list={[activeFilter === 'pizza' && 'active']}>Пицца</button>
+  <button class="btn btn-outline-primary filter-button" data-filter="pasta" class:list={[activeFilter === 'pasta' && 'active']}>Паста</button>
+  <button class="btn btn-outline-primary filter-button" data-filter="risotto" class:list={[activeFilter === 'risotto' && 'active']}>Ризотто</button>
+  <button class="btn btn-outline-primary filter-button" data-filter="dessert" class:list={[activeFilter === 'dessert' && 'active']}>Десерты</button>
+  <button class="btn btn-outline-primary filter-button" data-filter="snack" class:list={[activeFilter === 'snack' && 'active']}>Закуски</button>
+  <button class="btn btn-outline-primary filter-button" data-filter="soup" class:list={[activeFilter === 'soup' && 'active']}>Супы</button>
+</div>
+
+<div class="mobile-filter-container text-center">
+  <button class="mobile-filter-btn" id="mobileFilterToggle">
+    <i class="fas fa-filter me-2"></i>Фильтры
+  </button>
+  <div class="mobile-filter-dropdown" id="mobileFilterDropdown">
+    <button class="btn btn-outline-primary filter-button" data-filter="all" class:list={[activeFilter === 'all' && 'active']}>Все</button>
+    <button class="btn btn-outline-primary filter-button" data-filter="pizza" class:list={[activeFilter === 'pizza' && 'active']}>Пицца</button>
+    <button class="btn btn-outline-primary filter-button" data-filter="pasta" class:list={[activeFilter === 'pasta' && 'active']}>Паста</button>
+    <button class="btn btn-outline-primary filter-button" data-filter="risotto" class:list={[activeFilter === 'risotto' && 'active']}>Ризотто</button>
+    <button class="btn btn-outline-primary filter-button" data-filter="dessert" class:list={[activeFilter === 'dessert' && 'active']}>Десерты</button>
+    <button class="btn btn-outline-primary filter-button" data-filter="snack" class:list={[activeFilter === 'snack' && 'active']}>Закуски</button>
+    <button class="btn btn-outline-primary filter-button" data-filter="soup" class:list={[activeFilter === 'soup' && 'active']}>Супы</button>
+  </div>
+</div>
+
+<style>
+.filter-button {
+  margin: 5px !important;
+  padding: 10px 20px !important;
+  border: 2px solid #9C4A36 !important;
+  border-radius: 25px !important;
+  background-color: transparent !important;
+  color: #9C4A36 !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+}
+
+.filter-button.active,
+.filter-button:hover {
+  background-color: #9C4A36 !important;
+  color: white !important;
+  border-color: #9C4A36 !important;
+}
+
+.filter-button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+.mobile-filter-container {
+  display: none;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.mobile-filter-btn {
+  width: 50%;
+  background: linear-gradient(135deg, #9C4A36, #C16850);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+}
+
+.mobile-filter-btn:hover {
+  background: linear-gradient(135deg, #C16850, #9C4A36);
+  transform: translateY(-2px);
+}
+
+.mobile-filter-btn i {
+  transition: transform 0.3s ease;
+}
+
+.mobile-filter-btn.rotate i {
+  transform: rotate(180deg);
+}
+
+.mobile-filter-dropdown {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background: #F4E1D2;
+  border-radius: 15px;
+  padding: 0;
+  margin-top: 5px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  opacity: 0;
+}
+
+.mobile-filter-dropdown.show {
+  max-height: 200px;
+  opacity: 1;
+  padding: 10px;
+}
+
+@media (max-width: 767.98px) {
+  .mobile-filter-container {
+    display: block;
+  }
+  
+  .desktop-filter-buttons {
+    display: none;
+  }
+  
+  .filter-button {
+    margin: 3px !important;
+    padding: 8px 15px !important;
+    font-size: 14px !important;
+    transition: all 0.2s ease !important;
+  }
+  
+  .filter-button:hover {
+    transform: scale(1.05) !important;
+  }
+}
+</style>
+
+<script is:inline>
+document.addEventListener('DOMContentLoaded', () => {
+  const mobileFilterToggle = document.getElementById('mobileFilterToggle');
+  const mobileFilterDropdown = document.getElementById('mobileFilterDropdown');
+  
+  if (mobileFilterToggle && mobileFilterDropdown) {
+    mobileFilterToggle.addEventListener('click', () => {
+      mobileFilterDropdown.classList.toggle('show');
+      mobileFilterToggle.classList.toggle('rotate');
+    });
+  }
+});
+</script>
